@@ -70,71 +70,72 @@
 //     }
 //     rq(options, callback);
 // })
-// const mongoose = require("mongoose");
+ const mongoose = require("mongoose");
 // const dburi = "mongodb+srv://author:author123@cluster0-geoiq.mongodb.net/test?retryWrites=true";
-// const express = require("express");
-// const bodyParser = require("body-parser");
-// const app = express().use(bodyParser.json());
+ const express = require("express");
+ const bodyParser = require("body-parser");
+ const app = express().use(bodyParser.json());
 
-// // mongoose.connect(dburi, { useNewUrlParser: true }).catch(err => {
-// //     console.log("error occured", err);
-// // });
-// // mongoose.connection.on('error', function (err) {//any error
-// //     console.log('Mongoose connection error: ', err);
-// //     process.exit(1);
-// // })
-// // mongoose.connection.on("connected", () => {
-// //     console.log("Connected with database");
-// // });
+ mongoose.connect(dburi, { useNewUrlParser: true }).catch(err => {
+     console.log("error occured", err);
+ });
+ mongoose.connection.on('error', function (err) {//any error
+     console.log('Mongoose connection error: ', err);
+     process.exit(1);
+ })
+ mongoose.connection.on("connected", () => {
+     console.log("Connected with database");
+ });
 
-// // mongoose.connection.on("disconnected", () => {
-// //     console.log("Disconnected with database.");
-// //     process.exit(1);
-// // });
+ mongoose.connection.on("disconnected", () => {
+     console.log("Disconnected with database.");
+     process.exit(1);
+ });
 
-// // var userDetail = new mongoose.Schema(
-// //     {
-// //         Question: { type: [String], required: true },
+ var userDetail = new mongoose.Schema(
+     {
+         Question: { type: [String], required: true },
 
-// //     },
-// //     { collection: "Questions" }
-// // );
-// // var model = new mongoose.model("Questions", userDetail);
-// // var info = {
-// //     Name: "Ahmed",
-// //     id: "1234"
-// // }
-// // model.find({ id: info.id }).lean().then(data => {
-// //     console.log("data is : ", data[0].Name)
-// // })
-let data2 = [
+     },
+     { collection: "Questions" }
+ );
+ var model = new mongoose.model("Questions", userDetail);
+ var info = {
+     Name: "Ahmed",
+     id: "1234"
+ }
+ model.find({ id: info.id }).lean().then(data => {
+     console.log("data is : ", data[0].Name)
+ })
+
+//let data2 = [
     // "abc","abd","acd"
-    {
-        id:12,
-        _id: 321,
-        name:"abc"
-    },
-    {
-        id:12,
-        _id: 3221,
-        name:"abcd"
-    },
-    {
-        id:13,
-        _id: 322,
-        name:"abd"
-    },
-    {
-        id:14,
-        _id: 323,
-        name:"abe"
-    },
-    {
-        id:12,
-        _id: 32212,
-        name:"abcde"
-    }
-]
+//    {
+//        id:12,
+ //       _id: 321,
+//        name:"abc"
+//    },
+//    {
+//        id:12,
+//        _id: 3221,
+//        name:"abcd"
+//    },
+//    {
+//        id:13,
+//        _id: 322,
+//        name:"abd"
+//    },
+//    {
+//        id:14,
+ //       _id: 323,
+//        name:"abe"
+//    },
+//    {
+//        id:12,
+//       _id: 32212,
+//        name:"abcde"
+//    }
+//]
 // data2.push("sdf erf", "ert" , "op" )
 // let data3 =[]
 // for (let i in data2) {
